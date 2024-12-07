@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Driver Dashboard</title>
+    <link rel="stylesheet" href="scripts/mystyle.css">
+    <script type="text/javascript" src="d3.js"></script>
+    <script type="text/javascript" src="scripts/scatterplot.js"></script>
+    <script type="text/javascript" src="scripts/parallelcoord.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1> <img src="images/formula-1-logo-7.png" alt="Description of the image" width = 120> FORMULA 1 Drivers Data Dashboard </h1>
+    </header>
+
+    <div class="container">
+        <div id="intro" class="section">
+            <h2>Introduction</h2>
+            <p>The data is from Kaggle: 
+                <a href="https://www.kaggle.com/datasets/petalme/f1-drivers-dataset/data">F1 Drivers dataset</a>, 
+                with a license of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.
+            </p>
+            
+            <p>
+                <strong>
+                    <a href="https://www.formula1.com/en/latest/article/the-beginners-guide-to-the-f1-drivers-championship.53MjXJzTDxQnfxfoCLnxNZ">
+                        Formula 1 (F1) Overview
+                    </a>
+                </strong>: 
+                Each Formula 1 season spans a year and consists of approximately 20 to 30 races held in different locations worldwide. 
+                Each race determines a winner (1st place finisher) and the podium finishers (top 3 drivers: 1st, 2nd, and 3rd places). 
+                The top 10 drivers of each race earn points based on their finishing positions. 
+                At the end of the season, the driver with the highest cumulative points is the World Drivers' Champion.
+            </p>
+            <p>
+                The dataset contains <strong>868</strong> F1 drivers, their nationality and race statistics. We will use the data to explore the correlation between race statistics (e.g. number of pole positions, number of winner, etc.) and the world champion result (yes or no).
+            </p>
+            
+        </div>
+
+        <div id="control-panel" class="section">
+            <h2>Control Panel</h2>
+            <p>Use the sliders and controls below to filter the data:</p>
+            <!-- Sliders and controls will be dynamically added here -->
+        </div>
+
+        <!-- Plot Sections -->
+        <div id="plot1" class="plot section">
+            <h3>Plot 1</h3>
+            <div id="plot1-canvas">
+
+            </div> 
+        </div>
+
+        <div id="plot2" class="plot section">
+            <h3>Plot 2</h3>
+            <div id="plot2-canvas">
+                <script type="text/javascript" >
+                    // createScatterPlot();
+                </script>
+            </div> 
+        </div>
+
+        <div id="plot3" class="plot section">
+            <h3>Parallel Coordinate Plot</h3>
+            <div id="plot3-canvas">
+                <script type="text/javascript" >
+                    createParallelPlot();
+                </script>
+            </div>
+        </div>
+
+        <div id="plot4" class="plot section">
+            <h3>Plot 4</h3>
+            <div id="plot4-canvas"></div>
+        </div>
+    </div>
+</body>
+</html>
