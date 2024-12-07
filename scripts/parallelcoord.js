@@ -26,7 +26,7 @@ function createParallelPlot() {
             champion: d.Champion,
         };
     };
-    d3.csv("../F1_driver_dataset.csv", rowConverter).then((data)=>  {
+    d3.csv("../data/F1_driver_dataset.csv", rowConverter).then((data)=>  {
         console.log(data);
         dimensions = [
             "rate_pole",
@@ -68,7 +68,7 @@ function createParallelPlot() {
             .attr("d",  path)
             .style("fill", "none" )
             .style("stroke", (d) => { return( color(d.champion))} )
-            .style("stroke-width", 3)
+            .style("stroke-width", 2.5)
             .style("opacity", 0.8);
 
         // add axes
