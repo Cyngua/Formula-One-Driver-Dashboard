@@ -2,7 +2,7 @@ function createParallelPlot() {
     let w = 1200;
     let h = 400;
     let margin = {top: 40, right: 20, bottom: 5, left: 80}
-    const svg = d3.select("#plot3-canvas")
+    const svg = d3.select("#plot2-canvas")
                 .append("svg")
                 .attr("width", w + margin.left + margin.right)
                 .attr("height", h + margin.top + margin.bottom)
@@ -12,6 +12,7 @@ function createParallelPlot() {
     let rowConverter = (d) => {
         return {
             name: d.Driver,
+            decade: +d.Decade,
             num_pole: +d.Pole_Positions, 
             num_wins: +d.Race_Wins,
             num_podiums: +d.Podiums,
@@ -27,6 +28,7 @@ function createParallelPlot() {
         };
     };
     d3.csv("../data/F1_driver_dataset.csv", rowConverter).then((data)=>  {
+        data = data.filter(d => d.num_wins > 0);
         console.log(data);
         dimensions = [
             "rate_pole",
@@ -37,7 +39,7 @@ function createParallelPlot() {
         ];
         let color = d3.scaleOrdinal()
                     .domain(["True", "False"])
-                    .range([ "Coral", "RoyalBlue"])
+                    .range([ "#B22222", "Grey"])
                     
         let y = {}
         for (let i = 0; i < dimensions.length; i++) {
@@ -69,7 +71,27 @@ function createParallelPlot() {
             .style("fill", "none" )
             .style("stroke", (d) => { return( color(d.champion))} )
             .style("stroke-width", 2.5)
-            .style("opacity", 0.8);
+            .style("opacity", 0.75)
+            .on("mouseenter", function(event,d) { // start code from lecture 9
+                const [xPosition, yPosition] = d3.pointer(event, svg.node());
+                // Add tooltip
+                svg.append("text")
+                    .attr("id", "tooltip")
+                    .attr("x", xPosition)
+                    .attr("y", yPosition - 10)
+                    .attr("text-anchor", "middle")
+                    .attr("font-family", "sans-serif")
+                    .attr("font-size", "12px")
+                    .attr("font-weight", "bold")
+                    .attr("fill", "#FFFAFA")
+                    .attr("stroke", "white")
+                    .attr("stroke-width", 0.5)
+                    .text(d.name);
+                    })
+                    .on("mouseout", function() {
+                    //Remove the tooltip
+                    d3.select("#tooltip").remove();
+                });
 
         // add axes
         svg.selectAll("myAxis")
@@ -78,7 +100,7 @@ function createParallelPlot() {
                 .append("g")
                 .each((d) =>  { 
                     svg.append("g")
-                        .attr("class", "axis")
+                        .attr("class", "coordAxis")
                         .attr("transform", "translate(" + x(d) + ")")
                         .call(d3.axisLeft().ticks(5).scale(y[d])).style("stroke-width", 2)
                         .append("text")

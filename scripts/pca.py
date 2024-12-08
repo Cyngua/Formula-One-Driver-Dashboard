@@ -6,21 +6,32 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.manifold import TSNE
+from sklearn.manifold import LocallyLinearEmbedding, Isomap
 
-df = pd.read_csv("../F1_driver_dataset.csv")
-features = ["Pole_Rate","Start_Rate","Win_Rate","Podium_Rate","FastLap_Rate","Points_Per_Entry", "Years_Active"]
+df = pd.read_csv("../data/F1_driver_dataset.csv")
+# features = ["Pole_Rate","Start_Rate","FastLap_Rate","Points_Per_Entry", "Years_Active"]
+features = ["Pole_Positions","Fastest_Laps","Points_Per_Entry", "Win_Rate", "Podium_Rate"]
 target = ["Champion"]
 ind = ["Driver"]
 
 # data norm for features
-scaler = MinMaxScaler()
-df[features] = scaler.fit_transform(df[features])
+# scaler = MinMaxScaler()
+# df[features] = scaler.fit_transform(df[features])
 
 pca = decomposition.PCA(n_components=2)
 embeddings_pca = pd.DataFrame(
     pca.fit_transform(df[features]),
     columns=['PC0', 'PC1']
 )
+# embeddings_pca = pd.DataFrame(TSNE(n_components=2, learning_rate='auto',
+#                   init='random', perplexity=3).fit_transform(df[features]),
+#                   columns=['PC0', 'PC1'])
+# lle = LocallyLinearEmbedding(n_components=2, n_neighbors=10)
+# embeddings_pca = pd.DataFrame(lle.fit_transform(df[features]),
+#                   columns=['PC0', 'PC1'])
+# embeddings_pca = pd.DataFrame(Isomap(n_components=2, n_neighbors=10).fit_transform(df[features]),
+#                   columns=['PC0', 'PC1'])
 embeddings_pca["champion"] = df[target]
 embeddings_pca["driver"] = df[ind]
 

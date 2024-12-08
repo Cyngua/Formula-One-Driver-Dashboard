@@ -15,6 +15,7 @@ function createGlobalMap() {
     let rowConverter = (d) => {
         return {
             name: d.Driver,
+            decade: +d.Decade,
             nation: d.Nationality,
             champion: d.Champion,
         };
@@ -97,7 +98,27 @@ function createGlobalMap() {
                         //If value is undefined…
                         return "lightgrey";
                     }
-            });
+                })
+                .on("mouseenter", function(event,d) { // start code from lecture 9
+                    const [xPosition, yPosition] = d3.pointer(event, svg.node());
+                    // Add tooltip
+                    svg.append("text")
+                        .attr("id", "tooltip")
+                        .attr("x", xPosition)
+                        .attr("y", yPosition - 10)
+                        .attr("text-anchor", "middle")
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "12px")
+                        .attr("font-weight", "bold")
+                        .attr("fill", "#FFFAFA")
+                        .attr("stroke", "white")
+                        .attr("stroke-width", 0.5)
+                        .text(d.properties.name + ": " + d.properties.value);
+                        })
+                        .on("mouseout", function() {
+                        //Remove the tooltip
+                        d3.select("#tooltip").remove();
+                    });
 
         })
 
