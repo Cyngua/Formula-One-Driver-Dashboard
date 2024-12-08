@@ -22,7 +22,7 @@ function createGlobalMap() {
     };
     d3.csv("../data/F1_driver_dataset.csv", rowConverter).then( (data)=> {
         console.log(data);
-        const driversByNation = {}; //this should be a list, the data should be like {nation:, count:}
+        const driversByNation = {};
         const championsByNation = {};
         
         // count drivers for each nationality
@@ -88,14 +88,12 @@ function createGlobalMap() {
                 .append("path")
                 .attr("d", path)
                 .style("fill", (d)=> {
-                    //Get data value
+                    //get data value
                     let value = d.properties.value;
                     
                     if (value) {
-                        //If value exists…
                         return color(value);
                     } else {
-                        //If value is undefined…
                         return "lightgrey";
                     }
                 })
