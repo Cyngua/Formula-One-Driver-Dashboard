@@ -59,5 +59,13 @@ a {
     font-size: 12px;
     color: #FFFAFA;
 }
+.plot-container {
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-between; /* Add space between the plots */
+}
+#plot3-canvas, #plot4-canvas {
+    flex: 1;
+    float: left;
+}
 
 

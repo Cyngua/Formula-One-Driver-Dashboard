@@ -1,8 +1,8 @@
 function createScatterPlot() {
-    let w = 500;
-    let h = 400;
-    let margin = {top: 40, right: 80, bottom: 40, left: 80}
-    const svg = d3.select("#plot4-canvas")
+    let w = 450;
+    let h = 380;
+    let margin = {top: 40, right: 80, bottom: 40, left: 40}
+    const svg = d3.select("#plot3-canvas")
                 .append("svg")
                 .attr("width", w + margin.left + margin.right)
                 .attr("height", h + margin.top + margin.bottom)
@@ -157,6 +157,6 @@ function drawScatterPlot(svg, data, w, h, margin, decade) {
 }
 
 function updateScatterPlot(decade) {
-    const svg = d3.select("#plot4-canvas svg g");
-    drawScatterPlot(svg, window.scatterData, 500, 400, {top: 40, right: 80, bottom: 40, left: 80}, decade);
+    const svg = d3.select("#plot3-canvas svg g");
+    drawScatterPlot(svg, window.scatterData, 450, 380, {top: 40, right: 80, bottom: 40, left: 80}, decade);
 }

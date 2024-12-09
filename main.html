@@ -68,6 +68,7 @@
                     updateMap(this.value);
                     updateParallelPlot(this.value);
                     updateScatterPlot(this.value);
+                    updateBarPlot(this.value);
                     
                 };
             </script>
@@ -94,17 +95,14 @@
             </div>
         </div>
 
-        <div id="plot3" class="plot section">
-            <h3>Plot 3</h3>
-            <div id="plot3-canvas">
-                <!-- <script type="text/javascript">createBarplot();</script> -->
-            </div> 
-        </div>
-
         <div id="plot4" class="plot section">
             <h3>World Champions vs Race Winners -- More Detailed Views</h3>
-            <div id="plot4-canvas">
+            <div id="plot3-canvas">
                 <script type="text/javascript"> createScatterPlot();</script>
+                
+            </div>
+            <div id="plot4-canvas">
+                <script type="text/javascript"> createBarchart();</script>
             </div>
         </div>
     </div>
