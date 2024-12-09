@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 Driver Dashboard</title>
     <link rel="stylesheet" href="scripts/mystyle.css">
+    <link rel="stylesheet" href="scripts/sliderstyle.css">
     <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="scripts/barplot.js"></script>
     <script type="text/javascript" src="scripts/scatterplot.js"></script>
@@ -43,7 +44,8 @@
         </div>
 
         <div id="control-panel" class="section">
-            <h2>Select a range of years (decades)</h2>
+            <p><b>Select Decades:</b></p>
+            <br>
             <div class="slidecontainer">
                 <div id="StartValue">1950</div>
                 <input id="slider" type="range" min="1950" max="2020" step="10" value="2020">
@@ -63,16 +65,25 @@
                     SelectValue.innerHTML = this.value;
                     selector.style.left = (this.value - 1950)*100/(2020 - 1950) + "%";
                     ProgressBar.style.width = (this.value - 1950)*100/(2020 - 1950) + "%";
+                    updateMap(this.value);
+                    updateParallelPlot(this.value);
+                    updateScatterPlot(this.value);
+                    
                 };
             </script>
         </div>
 
         <!-- Plot Sections -->
         <div id="plot1" class="plot section">
-            <h3>Drivers in the Globe</h3>
+            <h3>Drivers in the Globe -- Choropleth Map</h3>
             <div id="plot1-canvas">
-                <script type="text/javascript">createGlobalMap();</script>
+                <script type="text/javascript">
+                    createGlobalMapData();
+                </script>
             </div> 
+            <div id="plot1-legend">
+                <script>createLegends();</script>
+            </div>
         </div>
 
         <div id="plot2" class="plot section">

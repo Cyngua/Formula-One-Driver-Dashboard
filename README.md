@@ -13,14 +13,12 @@ List of Main Features:
 - Control Panel (or filter):
     - Decades (slide bar)
     - Number of race entries (slide bar)
+- **Choropleth Map**: Color coded by Number of Drivers in the country
+- **Parallel Coordinate Graph**: Color Coded by Yes/No World Champion, with the following coordinates
+    - Pole Position Rate
+    - Race Winning Rate
+    - Podiums Rate
+    - Fastest Laps Rate
+    - Average Points
+- **Scatter Plot:**: 
 - **Bar Chart**: Drivers with Top 10 race wins
-- 
-- **Scatter Plot:** PCA Component 1 and 2, color-coded by championship results, hoping to find clusters
-- **Global Map**: Color coded by Number of Drivers in that Continent, and use circle sizes to show number of world champions
-- **Parallel Coordinate Graph**: with the following coordinates
-    - Number of Pole Positions
-    - Number of Podiums
-    - Number of Fastest Laps
-    - Number of Points
-    - Yes/No World Champion
-- Hidden Information Panel (if possible): to introduce Formula 1 race, the meaning of the columns, and summary statistics of the dataset

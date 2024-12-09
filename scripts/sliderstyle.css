@@ -1,0 +1,74 @@
+#control-panel {
+    position: fixed;
+    left: 5px;
+    top: 50%; 
+}
+.slidecontainer {
+    width: 90%;
+    margin: 5px;
+    position: relative;
+} 
+#slider{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 7px;
+    outline:none;
+    border-radius: 3px;
+}
+#slider::-webkit-slider-thumb{
+    /* -webkit-appearance: none; */
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index:3;
+    position: relative;
+}
+#selector{
+    height: 104px;
+    width: 48px;
+    position: absolute;
+    bottom: -20px;
+    left: 100%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+#SelectValue {
+    width: 48px;
+    height: 25px;
+    position: absolute;
+    top: 35px;
+    background: grey;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#StartValue {
+    width: 48px;
+    height: 20px;
+    position: absolute;
+    top: 25px;
+    text-align: center;
+    line-height: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transform: translateX(-50%)
+}
+#SelectValue::after {
+    content: '';
+    border-top: 20px solid grey;
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#ProgressBar{
+    width: 100%;
+    height: 8px;
+    background: grey;
+    border-radius: 3px;
+    position: absolute;
+    top: 7px;
+    left: 0; 
+}
