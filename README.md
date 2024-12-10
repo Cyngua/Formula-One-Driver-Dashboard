@@ -7,12 +7,8 @@ The dataset was downloaded from Kaggle: [F1 Drivers dataset](https://www.kaggle.
 
 The dataset contains **868** F1 drivers' name (primary key), nationality and race statistics. 
 
-List of Main Features:
-
 ## Visualizations
-- Control Panel (or filter):
-    - Decades (slide bar)
-    - Number of race entries (slide bar)
+- Control Panel: Decades (slide bar)
 - **Choropleth Map**: Color coded by Number of Drivers in the country
 - **Parallel Coordinate Graph**: Color Coded by Yes/No World Champion, with the following coordinates
     - Pole Position Rate
@@ -20,5 +16,17 @@ List of Main Features:
     - Podiums Rate
     - Fastest Laps Rate
     - Average Points
-- **Scatter Plot:**: 
-- **Bar Chart**: Drivers with Top 10 race wins
+- **Scatter Plot:**: Total Points versus Years Active
+- **Bar Chart**: Top 20 Drivers winning races and podium places
+
+## Dashboard Overview
+To interact with the dashboard, clone the repo and run the following in the terminal:
+```
+python -m http.server
+```
+Open a browser and go to "http://localhost:8000/main.html".
+
+![intro](images/intro.png)
+![choropleth](images/choropleth.png)
+![parallelcoords](images/parallelcoords.png)
+![scatterandbars](images/scatterandbars.png)

@@ -158,5 +158,5 @@ function drawScatterPlot(svg, data, w, h, margin, decade) {
 
 function updateScatterPlot(decade) {
     const svg = d3.select("#plot3-canvas svg g");
-    drawScatterPlot(svg, window.scatterData, 450, 380, {top: 40, right: 80, bottom: 40, left: 80}, decade);
+    drawScatterPlot(svg, window.scatterData, 450, 380, {top: 40, right: 80, bottom: 40, left: 40}, decade);
 }

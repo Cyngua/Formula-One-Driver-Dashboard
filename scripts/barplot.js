@@ -22,7 +22,7 @@ function createBarchart(){
         sortedData = data.sort((a, b) => {
             const winComparison = d3.descending(a.win, b.win);
             if (winComparison !== 0) {
-                return winComparison; // check if we can sort by win
+                return winComparison;
             }
             return d3.descending(a.podiums, b.podiums);
         });
